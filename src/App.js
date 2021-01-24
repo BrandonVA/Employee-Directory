@@ -1,10 +1,8 @@
-import EmployeeList from "./components/EmployeeList";
+import React from "react";
+import EmployeeDirectory from "./components/EmployeeDirectory";
+
 function App() {
-    return (
-        <div>
-            <EmployeeList />
-        </div>
-    );
+  return <div>{<EmployeeDirectory />}</div>;
 }
 
 export default App;
