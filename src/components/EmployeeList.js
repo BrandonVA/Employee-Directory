@@ -1,16 +1,19 @@
 import React from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const EmployeeList = (props) => {
-  console.log(props.employees);
+  //   console.log(props.employees.name.first);
+  //   props.employees.forEach((item) => console.log(item.name.first));
   //   const listOf;
   return (
     <div>
-      <h1>Hello World I'm Learning React!!!</h1>
-      <ul>
+      <ListGroup as="ul">
         {props.employees.map((employee, index) => (
-          <li key={index}>{employee.name.first}</li>
+          <ListGroup.Item as="li" key={index}>
+            {employee.name.first}
+          </ListGroup.Item>
         ))}
-      </ul>
+      </ListGroup>
     </div>
   );
 };
