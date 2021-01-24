@@ -20,11 +20,6 @@ class EmployeeDirectory extends Component {
   };
 
   sortByName = () => {
-    // const sort_az = (a, b) =>
-    //   a.name.first.toLowerCase() > b.name.first.toLowerCase() ? 1 : -1;
-    // const sort_za = (a, b) =>
-    //   a.name.first.toLowerCase() < b.name.first.toLowerCase() ? 1 : -1;
-
     if (this.state.sortedBy === "name_a-z") {
       const sortedEmployees = this.state.result.sort((a, b) =>
         a.name.first.toLowerCase() < b.name.first.toLowerCase() ? 1 : -1
