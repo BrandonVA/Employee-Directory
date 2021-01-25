@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import EmployeeList from "./EmployeeList";
 import API from "../utils/API";
 import Navigation from "./Navigation";
-
 import EmployeeNav from "./EmployeeNav";
+import sortEmployees from "./scripts/sortEmployees";
 
 class EmployeeDirectory extends Component {
   state = {
@@ -20,19 +20,19 @@ class EmployeeDirectory extends Component {
       .catch((err) => console.log(err));
   };
 
-  sortByName = () => {
-    if (this.state.sortedBy === "name_a-z") {
-      const sortedEmployees = this.state.result.sort((a, b) =>
-        a.name.first.toLowerCase() < b.name.first.toLowerCase() ? 1 : -1
-      );
-      this.setState({ result: sortedEmployees, sortedBy: "name_z-a" });
-    } else {
-      const sortedEmployees = this.state.result.sort((a, b) =>
-        a.name.first.toLowerCase() > b.name.first.toLowerCase() ? 1 : -1
-      );
-      this.setState({ result: sortedEmployees, sortedBy: "name_a-z" });
-    }
-
+  sortBy_id = (event) => {
+    console.log(event.target.id);
+    sortEmployees(
+      this.state.sortedBy,
+      event.target.id,
+      this.state.result,
+      (array, order) => {
+        this.setState({
+          result: array,
+          sortedBy: `${event.target.id}${order}`,
+        });
+      }
+    );
     console.log(this.state.sortedBy);
   };
 
@@ -40,7 +40,7 @@ class EmployeeDirectory extends Component {
     return (
       <div>
         <Navigation />
-        <EmployeeNav sort={this.sortByName} />
+        <EmployeeNav sort={this.sortBy_id} />
         {this.state.result.length > 0 ? (
           <EmployeeList
             employees={this.state.result}
