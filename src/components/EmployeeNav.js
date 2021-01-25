@@ -15,19 +15,23 @@ function EmployeeNav({ sort }) {
         </div>
         <div className="col-3">
           <Nav.Item>
-            <Nav.Link eventKey="link-1" onClick={sort}>
+            <Nav.Link eventKey="link-1" onClick={sort} id="name">
               Name
             </Nav.Link>
           </Nav.Item>
         </div>
         <div className="col-3">
           <Nav.Item>
-            <Nav.Link eventKey="link-3">Phone Number</Nav.Link>
+            <Nav.Link eventKey="link-3" onClick={sort} id="phone">
+              Phone Number
+            </Nav.Link>
           </Nav.Item>
         </div>
         <div className="col-3">
           <Nav.Item>
-            <Nav.Link eventKey="link-2">Email</Nav.Link>
+            <Nav.Link eventKey="link-2" onClick={sort} id="email">
+              Email
+            </Nav.Link>
           </Nav.Item>
         </div>
       </div>
