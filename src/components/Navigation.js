@@ -1,5 +1,8 @@
 import React from "react";
-import { Navbar, Form, Button, FormControl } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import FormControl from "react-bootstrap/FormControl";
 
 const Navigation = () => {
   return (
