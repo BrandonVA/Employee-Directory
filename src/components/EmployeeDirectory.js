@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import EmployeeList from "./EmployeeList";
 import API from "../utils/API";
+import Navigation from "./Navigation";
 
-import Test from "./Test";
+import EmployeeNav from "./EmployeeNav";
 
 class EmployeeDirectory extends Component {
   state = {
@@ -38,7 +39,8 @@ class EmployeeDirectory extends Component {
   render() {
     return (
       <div>
-        <Test sort={this.sortByName} />
+        <Navigation />
+        <EmployeeNav sort={this.sortByName} />
         {this.state.result.length > 0 ? (
           <EmployeeList
             employees={this.state.result}
