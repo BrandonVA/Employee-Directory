@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 
-const Navigation = () => {
+const Navigation = ({ filter }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#">Employee Directory</Navbar.Brand>
@@ -25,13 +25,7 @@ const Navigation = () => {
             type="text"
             placeholder="Search"
             className="mr-sm-2"
-            onChange={() => {
-              var selectVal = document.getElementById("filterBy").value;
-              var inputVal = document.getElementById("filterForInput").value;
-              //   const test = formData.getAll();
-              console.log(selectVal);
-              console.log(inputVal);
-            }}
+            onChange={filter}
           />
           <Button variant="outline-success">Search</Button>
         </Form>
