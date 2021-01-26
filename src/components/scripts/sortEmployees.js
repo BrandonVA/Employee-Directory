@@ -10,6 +10,8 @@ const sortEmployees = (sortedBy, value, currentRes, callback) => {
           return a.email < b.email ? 1 : -1;
         case "phone":
           return parseInt(a.cell) < parseInt(b.cell) ? 1 : -1;
+        default:
+          return "";
       }
     });
     callback(sortedEmployees, "_z-a");
@@ -24,6 +26,8 @@ const sortEmployees = (sortedBy, value, currentRes, callback) => {
           return a.email > b.email ? 1 : -1;
         case "phone":
           return parseInt(a.cell) > parseInt(b.cell) ? 1 : -1;
+        default:
+          return "";
       }
     });
     callback(sortedEmployees, "_a-z");
