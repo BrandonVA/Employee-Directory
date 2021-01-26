@@ -36,6 +36,8 @@ class EmployeeDirectory extends Component {
     console.log(this.state.sortedBy);
   };
 
+  filterEmployees = () => {};
+
   render() {
     return (
       <div>
