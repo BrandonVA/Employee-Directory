@@ -9,7 +9,7 @@ function EmployeeNav({ sort }) {
         <div className="col-3">
           <Nav.Item>
             <Nav.Link eventKey="disabled" disabled>
-              Photo
+              Sort by:
             </Nav.Link>
           </Nav.Item>
         </div>
