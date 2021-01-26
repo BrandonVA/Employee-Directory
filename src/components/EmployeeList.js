@@ -2,7 +2,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const EmployeeList = (props) => {
-  console.log(props.employees);
+  //   console.log(props.employees);
   //   props.employees.forEach((item) => console.log(item.name.first));
   //   const listOf;
   return (
