@@ -10,6 +10,7 @@ class EmployeeDirectory extends Component {
     result: {},
     sortedBy: "",
     cachedResult: "",
+    filterBy: "All",
   };
   componentDidMount() {
     this.getEmployees();
@@ -25,9 +26,12 @@ class EmployeeDirectory extends Component {
       )
       .catch((err) => console.log(err));
   };
+  handleChange = (e) => {
+    const filterByValue = e.target.value;
+    this.setState({ filterBy: filterByValue });
+  };
 
   sortBy_id = (event) => {
-    // console.log(event.target.id);
     sortEmployees(
       this.state.sortedBy,
       event.target.id,
@@ -39,12 +43,11 @@ class EmployeeDirectory extends Component {
         });
       }
     );
-    // console.log(this.state.sortedBy);
   };
 
-  filterEmployees = () => {
-    const selectVal = document.getElementById("filterBy").value;
-    const inputVal = document.getElementById("filterForInput").value;
+  filterEmployees = (e) => {
+    const selectVal = this.state.filterBy;
+    const inputVal = e.target.value;
     const newArray = this.state.cachedResult.filter((item) => {
       let fullName = `${item.name.first.toLowerCase()} ${item.name.last.toLowerCase()}`;
       let name_test = fullName.includes(inputVal.toLowerCase());
@@ -62,19 +65,16 @@ class EmployeeDirectory extends Component {
       }
     });
 
-    this.setState({
-      result: newArray,
-    });
-
-    // console.log(selectVal);
-    // console.log(inputVal);
-    // console.log(newArray);
+    this.setState({ result: newArray });
   };
 
   render() {
     return (
       <div>
-        <Navigation filter={this.filterEmployees} />
+        <Navigation
+          filter={this.filterEmployees}
+          handleChange={this.handleChange}
+        />
         <EmployeeNav sort={this.sortBy_id} />
         {this.state.result.length > 0 ? (
           <EmployeeList
