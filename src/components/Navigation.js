@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 
-const Navigation = ({ filter, handleChange }) => {
+const Navigation = ({ filter, handleChange, resetEmployees }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#">Employee Directory</Navbar.Brand>
@@ -27,7 +27,9 @@ const Navigation = ({ filter, handleChange }) => {
             className="mr-sm-2"
             onChange={filter}
           />
-          <Button variant="outline-success">Search</Button>
+          <Button variant="outline-success" onClick={resetEmployees}>
+            Reset
+          </Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>

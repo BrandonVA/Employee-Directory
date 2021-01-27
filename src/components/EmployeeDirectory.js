@@ -31,6 +31,10 @@ class EmployeeDirectory extends Component {
     this.setState({ filterBy: filterByValue });
   };
 
+  resetEmployees = () => {
+    this.setState({ result: this.state.cachedResult });
+  };
+
   sortBy_id = (event) => {
     sortEmployees(
       this.state.sortedBy,
@@ -74,6 +78,7 @@ class EmployeeDirectory extends Component {
         <Navigation
           filter={this.filterEmployees}
           handleChange={this.handleChange}
+          resetEmployees={this.resetEmployees}
         />
         <EmployeeNav sort={this.sortBy_id} />
         {this.state.result.length > 0 ? (
