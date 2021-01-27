@@ -4,14 +4,14 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 
-const Navigation = ({ filter }) => {
+const Navigation = ({ filter, handleChange }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#">Employee Directory</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Form inline className="ml-auto">
-          <Form.Group controlId="filterBy">
+          <Form.Group controlId="filterBy" onChange={handleChange}>
             <Form.Label className="mr-1">Filter By:</Form.Label>
             <Form.Control as="select" custom>
               <option value="all">All</option>
