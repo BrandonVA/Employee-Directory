@@ -6,6 +6,9 @@
 
 This is a react application that generates a list of random employees and lets you sort through them or filter the employees. The main purpose of this project is to learn how react works and learn how to manage state in react. This application generates 50 random employees and lets you sort them by name phone number or email along with letting you filter all the employees by the same fields and updates the page with only the current matching employees without having to refresh or load the page again.
 
+[Deployed-Site](https://brandonva.github.io/Employee-Directory/) <br />
+[Project-Page](https://github.com/BrandonVA/Employee-Directory)
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -20,6 +23,12 @@ npm i
 ## Usage
 
 Go to the deployed site and sort the employees by the felids listed or filter them by your desired fields.
+
+- Project Image
+  <img src="public\project-img.png">
+  <br />
+- Filtering Employees
+  <img src="public\project-img-filter.png">
 
 ## Contributing
 
