@@ -11,9 +11,20 @@ class EmployeeDirectory extends Component {
     sortedBy: "",
     cachedResult: "",
     filterBy: "All",
+    screenWidth: window.innerWidth,
   };
+
+  handleResize = (e) => {
+    this.setState({ screenWidth: window.innerWidth });
+  };
+
   componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
     this.getEmployees();
+  }
+
+  componentWillUnmount() {
+    window.addEventListener("resize", this.handleResize);
   }
 
   getEmployees = () => {
@@ -27,7 +38,7 @@ class EmployeeDirectory extends Component {
       .catch((err) => console.log(err));
   };
   handleChange = (e) => {
-    const filterByValue = e.target.value;
+    const filterByValue = e.target.textContent;
     this.setState({ filterBy: filterByValue });
   };
 
@@ -50,7 +61,7 @@ class EmployeeDirectory extends Component {
   };
 
   filterEmployees = (e) => {
-    const selectVal = this.state.filterBy;
+    const selectVal = this.state.filterBy.toLowerCase();
     const inputVal = e.target.value;
     const newArray = this.state.cachedResult.filter((item) => {
       let fullName = `${item.name.first.toLowerCase()} ${item.name.last.toLowerCase()}`;
@@ -79,16 +90,22 @@ class EmployeeDirectory extends Component {
           filter={this.filterEmployees}
           handleChange={this.handleChange}
           resetEmployees={this.resetEmployees}
+          filteredBy={this.state.filterBy}
         />
-        <EmployeeNav sort={this.sortBy_id} />
-        {this.state.result.length > 0 ? (
-          <EmployeeList
-            employees={this.state.result}
-            getEmployees={this.getEmployees}
+        <main className="container">
+          <EmployeeNav
+            screenWidth={this.state.screenWidth}
+            sort={this.sortBy_id}
           />
-        ) : (
-          <h2>No Results</h2>
-        )}
+          {this.state.result.length > 0 ? (
+            <EmployeeList
+              employees={this.state.result}
+              getEmployees={this.getEmployees}
+            />
+          ) : (
+            <h2>No Results</h2>
+          )}
+        </main>
       </div>
     );
   }
