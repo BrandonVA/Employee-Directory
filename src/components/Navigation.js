@@ -1,36 +1,57 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
+import InputGroup from "react-bootstrap/InputGroup";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
-const Navigation = ({ filter, handleChange, resetEmployees }) => {
+const Navigation = ({ filter, handleChange, resetEmployees, filteredBy }) => {
+  function DropdownItem() {
+    const dropdownItems = ["Name", "Phone", "Email", "All"];
+    return dropdownItems
+      .filter((item) => item !== filteredBy)
+      .map((item, index) => (
+        <Dropdown.Item key={index} onClick={handleChange}>
+          {item}
+        </Dropdown.Item>
+      ));
+  }
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#">Employee Directory</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Form inline className="ml-auto">
-          <Form.Group controlId="filterBy" onChange={handleChange}>
-            <Form.Label className="mr-1">Filter By:</Form.Label>
-            <Form.Control as="select" custom>
-              <option value="all">All</option>
-              <option value="name">Name</option>
-              <option value="phone">Phone</option>
-              <option value="email">Email</option>
-            </Form.Control>
-          </Form.Group>
-          <FormControl
-            id="filterForInput"
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
-            onChange={filter}
-          />
-          <Button variant="outline-success" onClick={resetEmployees}>
-            Reset
-          </Button>
-        </Form>
+        <div
+          className="ml-auto mt-2"
+          style={{ maxWidth: "600px", width: "100%" }}
+        >
+          <InputGroup className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text>Filter By:</InputGroup.Text>
+            </InputGroup.Prepend>
+            <DropdownButton
+              as={InputGroup.Prepend}
+              variant="outline-secondary"
+              title={`${filteredBy} `}
+              id="filterBy"
+              value={filteredBy}
+              onChange={handleChange}
+            >
+              {DropdownItem()}
+            </DropdownButton>
+            <FormControl
+              aria-describedby="filter Employees"
+              id="filterForInput"
+              onChange={filter}
+            />
+            <InputGroup.Append>
+              <Button variant="outline-secondary" onClick={resetEmployees}>
+                Reset
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </div>
       </Navbar.Collapse>
     </Navbar>
   );
